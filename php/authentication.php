@@ -1,10 +1,4 @@
 <?php
-    session_start();
-    include 'conection.php';    
-
-    $con = conexion();
-    $errors = array();
-
     if(isset($_SESSION['usuario']) && isset($_SESSION['rol'])) {
         header("Location: access.php");
     }
@@ -15,7 +9,7 @@
         $sql = "SELECT * FROM usuarios WHERE nombre_usuario= :usuario";
             $sentencia = $con->prepare($sql);
             $sentencia->bindParam(':usuario', $user);
-            $sentencia->execute();
+            $sentencia->execute(); 
     
         if(($numero = $sentencia->rowCount()) == 0) {
             session_destroy();

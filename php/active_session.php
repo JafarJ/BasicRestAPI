@@ -1,10 +1,4 @@
 <?php
-session_start();
-include '../php/conection.php';
-
-$con = conexion();
-$errores = array();
-
 if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])) {
     header("Location: ../CRM/access.php");    
 }

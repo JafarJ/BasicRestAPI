@@ -189,7 +189,7 @@ fieldset {
     border-bottom: 1px solid white;
     background: transparent;
     margin: 0 auto 5px;
-    font-family: 'Roboto', serif;
+    font-family: 'Montserrat', serif;
     font-size: 16px;
     outline: 0;
     -webkit-transition: border-color 0.2s ease-in-out;
@@ -413,18 +413,18 @@ fieldset {
 
     .contenedorApartados li {
         text-align: center;
-        padding: 0px;
+        padding: 15px 12px;
+        height: 52px;
         text-transform: uppercase;
         transition: all .2s ease-in-out;
     }
 
     .contenedorApartados > ul > li > a {
-        height: 52px;
         font-family: 'Montserrat', serif;
         font-size: 18px;
         color: white;
         line-height: 23px;
-        padding: 15px 12px;
+        padding: 0px;
         display: inline-block;
         vertical-align: middle;
         position: relative;
@@ -473,7 +473,7 @@ button {
         vertical-align: middle;
         white-space: nowrap;
         overflow: hidden;
-        font-family: 'Roboto', serif;
+        font-family: 'Montserrat', serif;
         font-size: 18px;
         color: white;
         padding: 0;
@@ -510,13 +510,16 @@ table.dataTable {
     border-collapse: separate;
     border-spacing: 0;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 0px;
+    font-family: 'Montserrat', serif;
 }
 
 .table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {
     border-top: 0;
-    background-color: rgba(3,30,94,1);
+    background-color: #181818;
     color: white;
+    text-align: left;
+    font-family: 'Montserrat', serif;
 }
 
 table.dataTable thead th, table.dataTable thead td {
@@ -565,17 +568,13 @@ tr > td > a {
 
 
 
-
-
-
-
-
 .mainCRMBody h2 {
-    font-family: 'Roboto', serif;
+    font-family: 'Montserrat', serif;
     font-size: 35px;
     color: black;
     padding: 0;
     margin: 0;
+    text-transform: uppercase;
 }
 
 .mainCRMBody .lista {
@@ -585,7 +584,7 @@ tr > td > a {
 }
 
     .mainCRMBody .lista h3 {
-        font-family: 'Roboto', serif;
+        font-family: 'Montserrat', serif;
         font-size: 18px;
         color: white;
         padding: 0;
@@ -622,14 +621,14 @@ tr > td > a {
 }
 
     .tituloCampo p {
-        font-family: 'Roboto', serif;
+        font-family: 'Montserrat', serif;
         font-size: 18px;
         color: gray;
         margin: auto auto auto 0;
     }
 
         .tituloCampo p span {
-            font-family: 'Roboto', serif;
+            font-family: 'Montserrat', serif;
             font-size: 18px;
             font-weight: 700px;
             font-style: oblique;
@@ -692,71 +691,4 @@ input[type=file] {
 
 .displayNone {
     display: none;
-}
-
-
-/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
--- --  -- -- -- -- -- -- -- Responsive  -- -- -- -- -- -- -- -- -- -- -- -- 
--- --  -- -- -- -- -- -- -- -- -- -- --  -- -- -- -- -- -- -- -- -- -- --*/
-
-@media (max-width: 1200px) { /* monitores normales y tablet horizontal */
-
-}
-
-@media (max-width: 992px) { /* tablet vertical */
-
-    .navbar-header {
-        float: none;
-        height: 52px;
-    }
-
-    .navbar-toggle {
-        display: block;
-        border-radius: 0;
-    }
-
-    .navbar-toggle {
-        margin-right: 0px;
-        margin-top: 0px;
-    }
-
-    .navbar-collapse {
-        border-top: 1px solid transparent;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-    }
-
-        .navbar-collapse.collapse {
-            display: none !important;
-        }
-
-    .navbar-nav {
-        float: none !important;
-        margin: 7.5px 15px;
-    }
-
-        .navbar-nav > li {
-            float: none;
-        }
-
-            .navbar-nav > li > a {
-                padding-top: 10px;
-                padding-bottom: 10px;
-            }
-
-    .navbar-text {
-        float: none;
-        margin: 15px 0;
-    }
-
-    .navbar-collapse.collapse.in {
-        display: block !important;
-    }
-
-    .collapsing {
-        overflow: hidden !important;
-    }
-}
-
-@media (max-width: 767px) { /* movil */
-
 }

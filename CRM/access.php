@@ -1,5 +1,6 @@
 <?php
-    include '../php/authentication.php'; 
+include '../php/session_start.php';
+include '../php/authentication.php'; 
 ?>
 
 <!DOCTYPE html>
