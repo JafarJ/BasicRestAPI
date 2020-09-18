@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-09-2020 a las 00:56:00
+-- Tiempo de generación: 19-09-2020 a las 00:59:48
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -29,20 +29,41 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `customers` (
-  `id_customer` int(11) NOT NULL,
-  `name_customer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `surname_customer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image_customer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `createdby_customer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `modifiedby_customer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `surname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_modified_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `customers`
 --
 
-INSERT INTO `customers` (`id_customer`, `name_customer`, `surname_customer`, `image_customer`, `createdby_customer`, `modifiedby_customer`) VALUES
-(1, 'Jon', 'Doe', 'jondoe_profilepic.png', '1', '1');
+INSERT INTO `customers` (`id`, `name`, `surname`, `image`, `created_by`, `last_modified_by`) VALUES
+(1, 'Jon', 'Doe', 'udQPHYu.jpg', '1', '8');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` int(11) NOT NULL,
+  `table_name` varchar(255) NOT NULL,
+  `permission` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `table_name`, `permission`) VALUES
+(1, 'customers', 'user'),
+(2, 'users', 'admin'),
+(4, 'permissions', 'admin');
 
 -- --------------------------------------------------------
 
@@ -51,19 +72,23 @@ INSERT INTO `customers` (`id_customer`, `name_customer`, `surname_customer`, `im
 --
 
 CREATE TABLE `users` (
-  `id_user` int(11) NOT NULL,
-  `name_user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password_user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `surname` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_modified_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id_user`, `name_user`, `password_user`, `role`) VALUES
-(1, 'admin', 'admin', 'administrator'),
-(2, 'user', 'user', 'user');
+INSERT INTO `users` (`id`, `name`, `surname`, `image`, `password`, `role`, `created_by`, `last_modified_by`) VALUES
+(8, 'admin', 'admin', 'download.png', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin', '1', '8'),
+(15, 'user', 'beta', 'mhXsyZu.jpg', '12dea96fec20593566ab75692c9949596833adc9', 'user', '8', '8');
 
 --
 -- Índices para tablas volcadas
@@ -73,13 +98,19 @@ INSERT INTO `users` (`id_user`, `name_user`, `password_user`, `role`) VALUES
 -- Indices de la tabla `customers`
 --
 ALTER TABLE `customers`
-  ADD PRIMARY KEY (`id_customer`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -89,13 +120,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

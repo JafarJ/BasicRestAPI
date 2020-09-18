@@ -1,16 +1,16 @@
 <?php
-    if(isset($_SESSION['usuario']) && isset($_SESSION['rol'])) {
+    if(isset($_SESSION['user']) && isset($_SESSION['rol'])) {
         header("Location: access.php");
     }
 
-    if(isset($_SESSION['usuario']) && isset($_SESSION['rol'])) {
-    
+    if(isset($_SESSION['user']) && isset($_SESSION['rol'])) {
+
         $user = $_SESSION['usuario'];
         $sql = "SELECT * FROM usuarios WHERE nombre_usuario= :usuario";
             $sentencia = $con->prepare($sql);
             $sentencia->bindParam(':usuario', $user);
-            $sentencia->execute(); 
-    
+            $sentencia->execute();
+
         if(($numero = $sentencia->rowCount()) == 0) {
             session_destroy();
             header('Location: access.php');
@@ -23,29 +23,28 @@
         } else {
 
             $user = $_POST['user'];
-            $pass = $_POST['password'];
+            $pass = sha1($_POST['password']);
 
             if($user == '' || $pass == '') {
                 $errors[] = 'Error, los campos no pueden estar vacíos';
             }
-        
+
             if(count($errors) == 0) {
-                $sql = 'SELECT * FROM users WHERE name_user = :name AND password_user = :pass';
+                $sql = 'SELECT * FROM users WHERE name = :name AND password = :pass';
                 $sentencia = $con->prepare($sql);
                 $sentencia-> bindParam(':name', $user);
                 $sentencia-> bindParam(':pass', $pass);
                 $sentencia->execute();
                 $rows = $sentencia->fetch(PDO::FETCH_ASSOC);
-                    
+
                 if(($respuesta = $sentencia->rowCount()) == 0) {
-                    //echo("<script>console.log('PHP: " . $user . "');</script>");
-                    echo("<script>console.log('PHP: " . $rows . "');</script>");
                     $errors[] = 'Error, incorrect user or password.';
                 } else {
-	             $_SESSION['usuario'] = $rows['name_user'];
+	             $_SESSION['usuario'] = $rows['name'];
 	             $_SESSION['rol'] = $rows['role'];
-	             header('Location: crm.php');
-            	
+	             $_SESSION['id'] = $rows['id'];
+	             header('Location: ../php/updateTable.php?updateTable=wellcome');
+
                 }
             }
         }

@@ -1,9 +1,9 @@
 <?php
-if(!isset($_SESSION['usuario']) && !isset($_SESSION['rol'])) {
+if(!isset($_SESSION['user']) && !isset($_SESSION['rol'])) {
     header("Location: ../CRM/access.php");    
 }
 
-if(isset($_SESSION['user']) && isset($_SESSION['role'])) {
+if(isset($_SESSION['user']) && isset($_SESSION['rol'])) {
     
     $user = $_SESSION['user'];
     $sql = "SELECT * FROM users WHERE name_user = :user";

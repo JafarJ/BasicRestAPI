@@ -45,11 +45,11 @@ include '../php/authentication.php';
 
         <footer>
             <div class="footer wrapper-flex">
-                <p>Hey! This is a test CRM for Agile Monkeys RestAPI test developped by <a href="">Jafar Jabbarzadeh</a></p>
+                <p>Hey! This is a test CRM for Agile Monkeys RestAPI test developped by <a target="_blank" href="https://www.linkedin.com/in/jafarjabbarzadeh/">Jafar Jabbarzadeh</a></p>
             </div>
         </footer>
 
-        <script src="../js/scripts.js"></script>
+        <script src="../js/CRMScripts.js"></script>
 
     </body>
 </html>

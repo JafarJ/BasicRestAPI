@@ -1,8 +1,10 @@
 <?php
 include '../php/session_start.php';
 include '../php/active_session.php';
+include '../php/permissions.php';
 include '../php/list_tables.php';
 include '../php/list_table_content.php';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,12 +39,15 @@ include '../php/list_table_content.php';
                         </div>
                         <div class="contenedorApartados">
                             <ul>
-                                <li><a href="">WELLCOME</a></li>
+                                <li><a href="../php/updateTable.php?updateTable=wellcome">WELLCOME</a></li>
                                 <?php
-                                    foreach($tableArray as $table_name) {                                 
-                                    ?>
-                                        <li><a href="../php/updateTable.php?updateTable=<?php print_r($table_name) ?>"><?php print_r($table_name) ?></a></li>
-                                    <?php }
+                                    foreach($tableArray as $table_name) {   
+                                        if($_SESSION['rol'] === "admin" || $_SESSION['rol'] === $permissionsHashtable[$table_name]){
+                                ?>
+                                <li><a href="../php/updateTable.php?updateTable=<?php print_r($table_name) ?>"><?php print_r($table_name) ?></a></li>
+                                <?php 
+                                        }
+                                    }
                                 ?>                         
                             </ul>
                         </div>
@@ -58,42 +63,15 @@ include '../php/list_table_content.php';
                 <div class="mainCRMBody" id="mainCRMBody">
                     <div class="separa-20"></div> 
 
-                    <?php if(isset($rowsArray)){ ?>
-                    <h2><?php print_r($_SESSION["tableName"]) ?></h2>
-                    
-                    <div class="separa-20"></div>
-                    <div>
-                        <table class="table table-striped dataTable" id="registros">
-                            <thead>
-                                <tr>
-                                    <?php $rows = $rowsArray[0];
-                                        $row_ids = array_keys($rows);
-                                        foreach($row_ids as $row_id) {
-                                    ?>  
-                                        <th><?php print_r($row_id) ?></th>
-                                    <?php } ?> 
-                                   
-                                    <th><a href="crear_usuario.php"><input type="button" class="btn btn-primary btn-right" value="Add new"></a></th>
-                                </tr>
-                            </thead>
-                            <tbody> 
-                            <?php foreach($rowsArray as $rows) { 
-                                ?>   
-                                <tr>
-                                    <?php foreach($rows as $row){
-                                        ?> 
-                                        <td><?php echo $row ?></td> 
-                                    <?php } ?>                                   
-                                    <td>
-                                        <a href="../php/eliminar_usuario.php?id=<?php echo $row['id_usuario'] ?>" type="button"><img src="../images/signo-de-cruz-en-un-circulo-en-un-cuadrado-redondeado.svg" alt="Delete" title="Eliminar"></a>
-                                        <a href="actualizar_usuario.php?id=<?php echo $row['id_usuario'] ?>" type="button"><img src="../images/editar-signo-de-interfaz.svg" alt="Update" title="Actualizar"></a>
-                                    </td>
-                                </tr>
-                            <?php } ?> 
-                            </tbody>
-                        </table>
-                    </div>
-                    <?php } ?>
+                    <?php
+                        if($landingPage === true){ 
+                            include '../CRM/welcome.php';
+                        }else if($performAction === true){
+                            include '../CRM/perform_action.php';
+                        }else{
+                            include '../CRM/table_contents.php';
+                        }
+                    ?>
 
                 </div>
             </div>
@@ -101,10 +79,10 @@ include '../php/list_table_content.php';
 
         <footer>
              <div class="footer wrapper-flex">
-                <p>Hey! This is a test CRM for Agile Monkeys RestAPI test developped by <a href="">Jafar Jabbarzadeh</a></p>
+                <p>Hey! This is a test CRM for Agile Monkeys RestAPI test developped by <a target="_blank" href="https://www.linkedin.com/in/jafarjabbarzadeh/">Jafar Jabbarzadeh</a></p>
             </div>
         </footer>
 
-        <script src="../js/scripts.js"></script>        
+        <script src="../js/CRMScripts.js"></script>        
     </body>
 </html>
