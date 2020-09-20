@@ -28,6 +28,7 @@ if(!isset($_SESSION["idToUpdate"])) {
 		$sentencia->execute();
 		$_SESSION["action"]=null;
 		$performAction = true;
+		echo "<meta http-equiv='refresh' content='0'>";
 		header("Location: ../CRM/crm.php");
 	}
 }

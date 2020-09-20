@@ -22,6 +22,7 @@ switch ($_SESSION["action"]) {
 		<thead>
             <tr>
                 <?php 
+                if($_SESSION["action"] !== null){
 					$rows = $rowsArray[0];
                     $row_ids = array_keys($rows);
                     foreach($row_ids as $row_id) { if($row_id !== "created_by" && $row_id !== "last_modified_by" && $row_id !== "id"){
@@ -62,7 +63,7 @@ switch ($_SESSION["action"]) {
 		<?php
 			for($i=0; $i<count($errors); $i++) { ?>
 				<p ><?php echo $errors[$i] ?></p>
-			<?php } ?>
+			<?php }} ?>
 		</div>
         </tbody>
     </table>

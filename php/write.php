@@ -3,7 +3,7 @@
 include_once '../php/conection.php';
 //To send tablename via url param
 if(isset($_GET["tableName"])){$tableName = $_GET["tableName"];}
-//solution for only "users" and "customers" tables case
+//solution for only "users" , "customers" and "permissions" tables case
 if($tableName === "users"){
 	//case for table being "users"
 	if(isset($_POST['submit'])) {
@@ -43,9 +43,10 @@ if($tableName === "users"){
 			$sentencia->bindParam(':rol', $role);
 			$sentencia->bindParam(':creator', $editor);
 			$sentencia->bindParam(':modifier', $editor);
-			$sentencia->execute();
+			$sentencia->execute();			
 			$_SESSION["action"]=null;
-			$performAction = true;
+			$performAction = true;	
+			echo "<meta http-equiv='refresh' content='0'>";		
 			header("Location: ../CRM/crm.php");
 		}
 	}
@@ -79,8 +80,9 @@ if($tableName === "users"){
 			$sentencia->bindParam(':creator', $editor);
 			$sentencia->bindParam(':modifier', $editor);
 			$sentencia->execute();
-			$_SESSION["action"]=null;
 			$performAction = true;
+			$_SESSION["action"]=null;
+			echo "<meta http-equiv='refresh' content='0'>";
 			header("Location: ../CRM/crm.php");
 		}
 	}
@@ -107,6 +109,7 @@ if($tableName === "users"){
 			$sentencia->execute();
 			$_SESSION["action"]=null;
 			$performAction = true;
+			echo "<meta http-equiv='refresh' content='0'>";
 			header("Location: ../CRM/crm.php");
 		}
 	}

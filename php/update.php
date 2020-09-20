@@ -9,7 +9,7 @@ $theOneToBeUpdated = $sentencia->fetch(PDO::FETCH_ASSOC);
 //To send tablename via url param
 if(isset($_GET["tableName"])){$tableName = $_GET["tableName"];}
 
-//solution for only "users" and "customers" tables case
+//solution for only "users" , "customers" and "permissions" tables case
 if($tableName === "users"){
 	//case for table being "users"
 	if(isset($_POST['submit'])) {
@@ -22,8 +22,6 @@ if($tableName === "users"){
 		$target = "../images/".basename($image);
 		
 		move_uploaded_file($_FILES['image']['tmp_name'], $target);
-
-		
 
 		if($name == '') {
 			$errors[] = "Error, name can´t be empty";
@@ -52,6 +50,7 @@ if($tableName === "users"){
 			$sentencia->execute();
 			$_SESSION["action"]=null;
 			$performAction = true;
+			echo "<meta http-equiv='refresh' content='0'>";
 			header("Location: ../CRM/crm.php");
 		}
 	}
@@ -87,6 +86,7 @@ if($tableName === "users"){
 			$sentencia->execute();
 			$_SESSION["action"]=null;
 			$performAction = true;
+			echo "<meta http-equiv='refresh' content='0'>";
 			header("Location: ../CRM/crm.php");
 		}
 	}
@@ -114,6 +114,7 @@ if($tableName === "users"){
 			$sentencia->execute();
 			$_SESSION["action"]=null;
 			$performAction = true;
+			echo "<meta http-equiv='refresh' content='0'>";
 			header("Location: ../CRM/crm.php");
 		}
 	}

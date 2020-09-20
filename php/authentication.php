@@ -1,4 +1,4 @@
-<?php //Checks if user exists
+<?php //Checks if user exists and checks OAuth2 
 
     if(isset($_SESSION['user']) && isset($_SESSION['rol'])) {
 
@@ -25,6 +25,9 @@
             if($user == '' || $pass == '') {
                 $errors[] = 'Error, fields can´t be empty';
             }
+
+            // IF NOT USING OAUTH WITH https://www.okta.com/ THEN COMMENT OR DELETE THE NEXT LINE
+            include '../php/oauth2.php';
 
             if(count($errors) == 0) {
                 $sql = 'SELECT * FROM users WHERE name = :name AND password = :pass';
