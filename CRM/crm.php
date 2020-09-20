@@ -1,5 +1,6 @@
 <?php
-include '../php/session_start.php';
+session_start();
+include_once '../php/conection.php';
 include '../php/active_session.php';
 include '../php/permissions.php';
 include '../php/list_tables.php';
@@ -11,6 +12,7 @@ include '../php/list_table_content.php';
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="refresh" content="900;url=../php/logout.php" />
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
         <title>CRM</title>
 
@@ -26,7 +28,7 @@ include '../php/list_table_content.php';
                     <div class="separa-50"></div>
                     <div class="wellcome">
                         <h2>wellcome</h2>
-                        <h2><?php echo $_SESSION['usuario'] ?></h2>
+                        <h2><?php echo $_SESSION['user'] ?></h2>
                         <h3><?php echo $_SESSION['rol'] ?></h3>
                     </div>
                     <div class="separa-50"></div>

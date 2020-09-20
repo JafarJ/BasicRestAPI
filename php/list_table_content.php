@@ -1,5 +1,4 @@
 <?php
-
 $rowsArray = [];
 $tableName = $_SESSION["tableName"];
 $action = $_SESSION["action"];
@@ -22,7 +21,5 @@ if($tableName === "wellcome"){
 	$performAction = false;
 	$landingPage = false;
 	$_SESSION["action"] = null;
-	//print_r($rowsArray);
 }
-
 ?>

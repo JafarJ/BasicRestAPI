@@ -1,5 +1,6 @@
 <?php
-include '../php/session_start.php';
+session_start();
+include_once '../php/conection.php';
 include '../php/authentication.php'; 
 ?>
 
@@ -18,9 +19,7 @@ include '../php/authentication.php';
     <body>
 
         <main>
-            <div class="background">
-                <img src="images/Fondo.jpg" alt="">
-            </div>
+            
             <div class="container">
                 <div class="access wrapper-flex">
                     <form id="access" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" class="relative">                                     

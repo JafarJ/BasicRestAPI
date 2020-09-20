@@ -1,4 +1,8 @@
 <?php
+
+include_once '../php/conection.php';
+//To send tablename via url param
+if(isset($_GET["tableName"])){$tableName = $_GET["tableName"];}
 //solution for only "users" and "customers" tables case
 if($tableName === "users"){
 	//case for table being "users"

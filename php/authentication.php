@@ -1,19 +1,16 @@
-<?php
-    if(isset($_SESSION['user']) && isset($_SESSION['rol'])) {
-        header("Location: access.php");
-    }
+<?php //Checks if user exists
 
     if(isset($_SESSION['user']) && isset($_SESSION['rol'])) {
 
-        $user = $_SESSION['usuario'];
-        $sql = "SELECT * FROM usuarios WHERE nombre_usuario= :usuario";
-            $sentencia = $con->prepare($sql);
-            $sentencia->bindParam(':usuario', $user);
-            $sentencia->execute();
+        $user = $_SESSION['user'];
+        $sql = "SELECT * FROM users WHERE name = :user";
+        $sentencia = $con->prepare($sql);
+        $sentencia->bindParam(':user', $user);
+        $sentencia->execute();
 
-        if(($numero = $sentencia->rowCount()) == 0) {
-            session_destroy();
-            header('Location: access.php');
+        if(($numero = $sentencia->rowCount()) > 0) {
+           
+            header('Location: ../CRM/crm.php');
         }
     }
 
@@ -26,7 +23,7 @@
             $pass = sha1($_POST['password']);
 
             if($user == '' || $pass == '') {
-                $errors[] = 'Error, los campos no pueden estar vacíos';
+                $errors[] = 'Error, fields can´t be empty';
             }
 
             if(count($errors) == 0) {
@@ -40,11 +37,10 @@
                 if(($respuesta = $sentencia->rowCount()) == 0) {
                     $errors[] = 'Error, incorrect user or password.';
                 } else {
-	             $_SESSION['usuario'] = $rows['name'];
+	             $_SESSION['user'] = $rows['name'];
 	             $_SESSION['rol'] = $rows['role'];
 	             $_SESSION['id'] = $rows['id'];
 	             header('Location: ../php/updateTable.php?updateTable=wellcome');
-
                 }
             }
         }

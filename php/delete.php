@@ -1,13 +1,17 @@
 <?php
+include_once '../php/conection.php';
+//To send tablename via url param
+if(isset($_GET["tableName"])){$tableName = $_GET["tableName"];}
+
 if(!isset($_SESSION["idToUpdate"])) {
-	$errores[] = 'Error, no se ha mandado ningun id.';
+	$errores[] = 'Error, id wasn´t sent.';
 } else {
 	if($_SESSION["idToUpdate"] == ''){
-		$errores[] = 'Error, el id no puede estar vacío.';
+		$errores[] = 'Error, id can´t be empty.';
 	}
 
 	if(!is_numeric($_SESSION["idToUpdate"])) {
-		$errores[] = 'Error, el id debe ser numérico.';
+		$errores[] = 'Error, id has to be numeric.';
 	}
 
 	$sql = "SELECT * FROM {$tableName} WHERE id = :id";
@@ -16,7 +20,7 @@ if(!isset($_SESSION["idToUpdate"])) {
 	$sentencia->execute();
 
 	if(($respuesta = $sentencia->rowCount()) == 0){
-		$errores[] = 'Error, el id ingresado no existe.';
+		$errores[] = 'Error, id does not exist.';
 	} else {
 		$sql = "DELETE FROM {$tableName} WHERE id = :id";
 		$sentencia = $con->prepare($sql);

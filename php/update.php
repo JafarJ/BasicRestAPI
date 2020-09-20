@@ -1,10 +1,13 @@
 <?php 
+include_once '../php/conection.php';
 $id = $_SESSION["idToUpdate"];
 $sql = "SELECT * FROM {$tableName} WHERE id = :id";
 $sentencia = $con->prepare($sql);
 $sentencia->bindParam(':id', $id);
 $sentencia->execute();
 $theOneToBeUpdated = $sentencia->fetch(PDO::FETCH_ASSOC);
+//To send tablename via url param
+if(isset($_GET["tableName"])){$tableName = $_GET["tableName"];}
 
 //solution for only "users" and "customers" tables case
 if($tableName === "users"){
