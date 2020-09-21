@@ -1,4 +1,9 @@
 <?php
+include_once '../php/conection.php';
+//To send tablename via url param
+if(isset($_GET["tableName"])){
+	$_SESSION["tableName"] = $_GET["tableName"];	
+}
 $rowsArray = [];
 $tableName = $_SESSION["tableName"];
 $action = $_SESSION["action"];
@@ -18,6 +23,7 @@ if($tableName === "wellcome"){
 	$sentencia = $con->prepare($sql);
 	$sentencia->execute();
 	$rowsArray = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    if(isset($_GET["tableName"])){echo json_encode("Succesfully read ".$tableName." -> ");echo json_encode($rowsArray);};
 	$performAction = false;
 	$landingPage = false;
 	$_SESSION["action"] = null;

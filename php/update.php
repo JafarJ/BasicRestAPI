@@ -1,5 +1,10 @@
 <?php 
 include_once '../php/conection.php';
+if(isset($_GET["tableName"])){
+	$tableName = $_GET["tableName"];	
+	$_SESSION['id'] = $_GET["sessionid"];
+	$_SESSION['idToUpdate'] = $_GET["idToUpdate"];
+}
 $id = $_SESSION["idToUpdate"];
 $sql = "SELECT * FROM {$tableName} WHERE id = :id";
 $sentencia = $con->prepare($sql);
@@ -50,7 +55,7 @@ if($tableName === "users"){
 			$sentencia->execute();
 			$_SESSION["action"]=null;
 			$performAction = true;
-			echo "<meta http-equiv='refresh' content='0'>";
+			if(isset($_GET["tableName"])){echo json_encode("Succesfully updated user in db");}else{echo "<meta http-equiv='refresh' content='0'>";};
 			header("Location: ../CRM/crm.php");
 		}
 	}
@@ -86,7 +91,7 @@ if($tableName === "users"){
 			$sentencia->execute();
 			$_SESSION["action"]=null;
 			$performAction = true;
-			echo "<meta http-equiv='refresh' content='0'>";
+			if(isset($_GET["tableName"])){echo json_encode("Succesfully updated customer in db");}else{echo "<meta http-equiv='refresh' content='0'>";};
 			header("Location: ../CRM/crm.php");
 		}
 	}
@@ -114,7 +119,7 @@ if($tableName === "users"){
 			$sentencia->execute();
 			$_SESSION["action"]=null;
 			$performAction = true;
-			echo "<meta http-equiv='refresh' content='0'>";
+			if(isset($_GET["tableName"])){echo json_encode("Succesfully updated permission in db");}else{echo "<meta http-equiv='refresh' content='0'>";};
 			header("Location: ../CRM/crm.php");
 		}
 	}

@@ -2,7 +2,10 @@
 
 include_once '../php/conection.php';
 //To send tablename via url param
-if(isset($_GET["tableName"])){$tableName = $_GET["tableName"];}
+if(isset($_GET["tableName"])){
+	$tableName = $_GET["tableName"];	
+	$_SESSION['id'] = $_GET["sessionid"];
+}
 //solution for only "users" , "customers" and "permissions" tables case
 if($tableName === "users"){
 	//case for table being "users"
@@ -46,7 +49,7 @@ if($tableName === "users"){
 			$sentencia->execute();			
 			$_SESSION["action"]=null;
 			$performAction = true;	
-			echo "<meta http-equiv='refresh' content='0'>";		
+			if(isset($_GET["tableName"])){echo json_encode("Succesfully added user to db");}else{echo "<meta http-equiv='refresh' content='0'>";};	
 			header("Location: ../CRM/crm.php");
 		}
 	}
@@ -82,7 +85,7 @@ if($tableName === "users"){
 			$sentencia->execute();
 			$performAction = true;
 			$_SESSION["action"]=null;
-			echo "<meta http-equiv='refresh' content='0'>";
+			if(isset($_GET["tableName"])){echo json_encode("Succesfully added customer to db");}else{echo "<meta http-equiv='refresh' content='0'>";};	
 			header("Location: ../CRM/crm.php");
 		}
 	}
@@ -109,7 +112,7 @@ if($tableName === "users"){
 			$sentencia->execute();
 			$_SESSION["action"]=null;
 			$performAction = true;
-			echo "<meta http-equiv='refresh' content='0'>";
+			if(isset($_GET["tableName"])){echo json_encode("Succesfully added permission to db");}else{echo "<meta http-equiv='refresh' content='0'>";};	
 			header("Location: ../CRM/crm.php");
 		}
 	}

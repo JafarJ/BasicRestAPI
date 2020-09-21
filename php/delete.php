@@ -1,7 +1,10 @@
 <?php
 include_once '../php/conection.php';
 //To send tablename via url param
-if(isset($_GET["tableName"])){$tableName = $_GET["tableName"];}
+if(isset($_GET["tableName"])){
+	$tableName = $_GET["tableName"];	
+	$_SESSION['idToUpdate'] = $_GET["idToUpdate"];
+}
 
 if(!isset($_SESSION["idToUpdate"])) {
 	$errores[] = 'Error, id wasn´t sent.';
@@ -28,7 +31,7 @@ if(!isset($_SESSION["idToUpdate"])) {
 		$sentencia->execute();
 		$_SESSION["action"]=null;
 		$performAction = true;
-		echo "<meta http-equiv='refresh' content='0'>";
+        if(isset($_GET["tableName"])){echo json_encode("Succesfully deleted from db");}else{echo "<meta http-equiv='refresh' content='0'>";};
 		header("Location: ../CRM/crm.php");
 	}
 }
