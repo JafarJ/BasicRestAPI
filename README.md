@@ -37,7 +37,7 @@ In my case https://www.siteground.es/ was used, I added it in a folder at my exi
 
 ## Access through Postman
 
-If you want to access the API through a Dev tool like https://www.postman.com/ follow the instructions. *Everything you´ll receive will be in JSON format.*
+If you want to access the API through a Dev tool like https://www.postman.com/ follow the instructions. *This will be expecting your conection.php file to be properly set up with your db and credentials. Everything you´ll receive will be in JSON format.*
 
 * Add your local or live URL under the "PHP" folder as the request URL
 * For *reading* existing tables get to "/php/list_tables.php" and add param "dbname" with value "glytchwa_tamrestapi"
