@@ -1,36 +1,28 @@
-# Project Title
+# Pure PHP RestApi 
+Hey! This is a no framework PHP project using PDO for a RestApi including Okta Authentication and an example CRM for testing!
+[![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) [![Dependency Status](http://img.shields.io/gemnasium/badges/badgerbadgerbadger.svg?style=flat-square)](https://gemnasium.com/badges/badgerbadgerbadger) [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger) [![Code Climate](http://img.shields.io/codeclimate/github/badges/badgerbadgerbadger.svg?style=flat-square)](https://codeclimate.com/github/badges/badgerbadgerbadger) [![Github Issues](http://githubbadges.herokuapp.com/badges/badgerbadgerbadger/issues.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger/issues) [![Pending Pull-Requests](http://githubbadges.herokuapp.com/badges/badgerbadgerbadger/pulls.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger/pulls) [![Gem Version](http://img.shields.io/gem/v/badgerbadgerbadger.svg?style=flat-square)](https://rubygems.org/gems/badgerbadgerbadger) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) [![Badges](http://img.shields.io/:badges-9/9-ff6799.svg?style=flat-square)](https://github.com/badges/badgerbadgerbadger)
 
-One Paragraph of project description goes here
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine with XAMPP for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Import the sql file located inside the SQL folder (WARNING: Write, update and delete functions will only work with the included db) and if using Okta OAuth2 create account and new application to get neccesary data, tutorials on how to get your client started are on the official website https://www.okta.com/, further explanation down below!
 
-```
-Give examples
-```
+### A step by step guide.
 
-### Installing
+Make sure your file is inside Drive:\xampp\htdocs if using XAMPP for the local server. 
 
-A step by step series of examples that tell you how to get a development env running
+Open "conection.php" inside "php" folder and modify the variables $dsn, $user, $password and $dbName to your data. 
+https://i.pinimg.com/originals/85/b8/cf/85b8cf2b4ac58b56159a3e46294595a2.png
 
-Say what the step will be
+If you don´t want to use Okta Auth then delete or ignore the "oauth2.php" file inside "php" folder and go to the file "authetication.php" and comment out or delete this line.
+https://i.pinimg.com/originals/1d/a4/30/1da430f9526451c7cc5cb4c94265b22d.png
 
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+If you wanted to use Okta inside "oauth2.php" change the following variables to your data.
+https://i.pinimg.com/originals/e0/55/3e/e0553ef01ffb30392579fcb3ea08136b.png
 
 ## Running the tests
 
