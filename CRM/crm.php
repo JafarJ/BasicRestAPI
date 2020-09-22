@@ -25,21 +25,21 @@ include '../php/list_table_content.php';
 
                 <!--   NavBar --------------------------------------------------  -->
                 <div class="NavigationBar">
-                    <div class="separa-50"></div>
+                    <div class="space-50"></div>
                     <div class="wellcome">
                         <h2>wellcome</h2>
                         <h2><?php echo $_SESSION['user'] ?></h2>
                         <h3><?php echo $_SESSION['rol'] ?></h3>
                     </div>
-                    <div class="separa-50"></div>
+                    <div class="space-50"></div>
                     <div class="apartados">
-                        <div class="tituloApartados wrapper-flex">
+                        <div class="NavBarTitle wrapper-flex">
                             <div>
                                 <h3>NAVIGATION BAR</h3>
                                 <div class="lineaBlanca"></div>
                             </div>
                         </div>
-                        <div class="contenedorApartados">
+                        <div class="NavBarContent">
                             <ul>
                                 <li><a href="../php/updateTable.php?updateTable=wellcome">WELLCOME</a></li>
                                 <?php
@@ -63,7 +63,7 @@ include '../php/list_table_content.php';
 
                 <!--   tabla --------------------------------------------------  -->
                 <div class="mainCRMBody" id="mainCRMBody">
-                    <div class="separa-20"></div> 
+                    <div class="space-20"></div> 
 
                     <?php
                         if($landingPage === true){ 
@@ -81,7 +81,7 @@ include '../php/list_table_content.php';
 
         <footer>
              <div class="footer wrapper-flex">
-                <p>Hey! This is a test CRM for Agile Monkeys RestAPI test developped by <a target="_blank" href="https://www.linkedin.com/in/jafarjabbarzadeh/">Jafar Jabbarzadeh</a></p>
+                <p>Hey! this is a no framework PHP project using PDO for a RestApi developped by <a target="_blank" href="https://www.linkedin.com/in/jafarjabbarzadeh/">Jafar Jabbarzadeh</a></p>
             </div>
         </footer>      
     </body>

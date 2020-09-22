@@ -85,27 +85,27 @@ input {
         content: normal;
     }
 
-.separa-5 {
+.space-5 {
     height: 5px;
 }
 
-.separa-10 {
+.space-10 {
     height: 10px;
 }
 
-.separa-20 {
+.space-20 {
     height: 20px;
 }
 
-.separa-40 {
+.space-40 {
     height: 40px;
 }
 
-.separa-30 {
+.space-30 {
     height: 30px;
 }
 
-.separa-50 {
+.space-50 {
     height: 50px;
 }
 
@@ -240,6 +240,18 @@ fieldset {
         padding: 10px 20px;
         font-size: 18px;
         font-weight: 600;
+    }
+
+    .wellcome {
+        margin: 0 30px;
+    }
+
+    .wellcome a, .wellcome a:hover, .wellcome a:visited, .wellcome a:link, .wellcome a:active {
+        color: black;
+    }
+    
+    .wellcome a:hover {
+        text-decoration: underline;
     }
 
 #performAction input[type="text"],
@@ -423,11 +435,11 @@ fieldset {
     overflow: hidden;
 }
 
-.tituloApartados {
+.NavBarTitle {
     height: 50px;
 }
 
-    .tituloApartados h3 {
+    .NavBarTitle h3 {
         font-family: 'MontserratBold', serif;
         font-size: 25px;
         color: white;
@@ -444,7 +456,7 @@ fieldset {
     transition: 0.2s;
 }
 
-.contenedorApartados {
+.NavBarContent {
     overflow: hidden;
     height: 460px;
     padding: 20px;
@@ -452,26 +464,26 @@ fieldset {
     overflow-x: hidden;
 }
 
-    .contenedorApartados::-webkit-scrollbar-track {
+    .NavBarContent::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
         background-color: #F5F5F5;
     }
 
-    .contenedorApartados::-webkit-scrollbar {
+    .NavBarContent::-webkit-scrollbar {
         width: 6px;
         background-color: #F5F5F5;
     }
 
-    .contenedorApartados::-webkit-scrollbar-thumb {
+    .NavBarContent::-webkit-scrollbar-thumb {
         background-color: #000000;
     }
 
-    .contenedorApartados ul {
+    .NavBarContent ul {
         list-style: none;
         padding: 0;
     }
 
-    .contenedorApartados li {
+    .NavBarContent li {
         text-align: center;
         padding: 15px 12px;
         height: 52px;
@@ -479,7 +491,7 @@ fieldset {
         transition: all .2s ease-in-out;
     }
 
-    .contenedorApartados > ul > li > a {
+    .NavBarContent > ul > li > a {
         font-family: 'Montserrat', serif;
         font-size: 18px;
         color: white;
@@ -562,7 +574,7 @@ table.dataTable {
     width: 100%;
     margin: 0 auto;
     clear: both;
-    border-collapse: separate;
+    border-collapse: spacete;
     border-spacing: 0;
     overflow: hidden;
     border-radius: 0px;

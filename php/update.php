@@ -7,10 +7,10 @@ if(isset($_GET["tableName"])){
 }
 $id = $_SESSION["idToUpdate"];
 $sql = "SELECT * FROM {$tableName} WHERE id = :id";
-$sentencia = $con->prepare($sql);
-$sentencia->bindParam(':id', $id);
-$sentencia->execute();
-$theOneToBeUpdated = $sentencia->fetch(PDO::FETCH_ASSOC);
+$sentence = $con->prepare($sql);
+$sentence->bindParam(':id', $id);
+$sentence->execute();
+$theOneToBeUpdated = $sentence->fetch(PDO::FETCH_ASSOC);
 //To send tablename via url param
 if(isset($_GET["tableName"])){$tableName = $_GET["tableName"];}
 
@@ -44,15 +44,15 @@ if($tableName === "users"){
 			$editor = $_SESSION['id'];
 			$encryptedPass = SHA1($pass);
 			$sql = "UPDATE {$tableName} SET name = :name, surname = :surname, image = :image, password = :pass, role = :rol, last_modified_by = :modifier WHERE id = :id";
-			$sentencia = $con->prepare($sql);
-			$sentencia->bindParam(':name', $name);
-			$sentencia->bindParam(':surname', $surname);
-			$sentencia->bindParam(':image', $image);
-			$sentencia->bindParam(':pass', $encryptedPass);
-			$sentencia->bindParam(':rol', $role);
-			$sentencia->bindParam(':modifier', $editor);
-			$sentencia->bindParam(':id', $id);
-			$sentencia->execute();
+			$sentence = $con->prepare($sql);
+			$sentence->bindParam(':name', $name);
+			$sentence->bindParam(':surname', $surname);
+			$sentence->bindParam(':image', $image);
+			$sentence->bindParam(':pass', $encryptedPass);
+			$sentence->bindParam(':rol', $role);
+			$sentence->bindParam(':modifier', $editor);
+			$sentence->bindParam(':id', $id);
+			$sentence->execute();
 			$_SESSION["action"]=null;
 			$performAction = true;
 			if(isset($_GET["tableName"])){echo json_encode("Succesfully updated user in db");}else{echo "<meta http-equiv='refresh' content='0'>";};
@@ -82,13 +82,13 @@ if($tableName === "users"){
 		if(count($errors) == 0) {		
 			$editor = $_SESSION['id'];
 			$sql = "UPDATE {$tableName} SET name = :name, surname = :surname, image = :image, last_modified_by = :modifier WHERE id = :id";
-			$sentencia = $con->prepare($sql);
-			$sentencia->bindParam(':name', $name);
-			$sentencia->bindParam(':surname', $surname);
-			$sentencia->bindParam(':image', $image);
-			$sentencia->bindParam(':modifier', $editor);
-			$sentencia->bindParam(':id', $id);
-			$sentencia->execute();
+			$sentence = $con->prepare($sql);
+			$sentence->bindParam(':name', $name);
+			$sentence->bindParam(':surname', $surname);
+			$sentence->bindParam(':image', $image);
+			$sentence->bindParam(':modifier', $editor);
+			$sentence->bindParam(':id', $id);
+			$sentence->execute();
 			$_SESSION["action"]=null;
 			$performAction = true;
 			if(isset($_GET["tableName"])){echo json_encode("Succesfully updated customer in db");}else{echo "<meta http-equiv='refresh' content='0'>";};
@@ -112,11 +112,11 @@ if($tableName === "users"){
 		
 		if(count($errors) == 0) {		
 			$sql = "UPDATE {$tableName} SET table_name = :table_name, permission = :permission WHERE id = :id";
-			$sentencia = $con->prepare($sql);
-			$sentencia->bindParam(':table_name', $table_name);
-			$sentencia->bindParam(':permission', $permission);
-			$sentencia->bindParam(':id', $id);
-			$sentencia->execute();
+			$sentence = $con->prepare($sql);
+			$sentence->bindParam(':table_name', $table_name);
+			$sentence->bindParam(':permission', $permission);
+			$sentence->bindParam(':id', $id);
+			$sentence->execute();
 			$_SESSION["action"]=null;
 			$performAction = true;
 			if(isset($_GET["tableName"])){echo json_encode("Succesfully updated permission in db");}else{echo "<meta http-equiv='refresh' content='0'>";};

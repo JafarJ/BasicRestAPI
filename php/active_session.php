@@ -7,11 +7,11 @@ if(isset($_SESSION['user']) && isset($_SESSION['rol'])) {
     
     $user = $_SESSION['user'];
     $sql = "SELECT * FROM users WHERE name = :user";
-    $sentencia = $con->prepare($sql);
-    $sentencia->bindParam(':user', $user);
-    $sentencia->execute();
+    $sentence = $con->prepare($sql);
+    $sentence->bindParam(':user', $user);
+    $sentence->execute();
     
-    if(($numero = $sentencia->rowCount()) == 0) {
+    if(($number = $sentence->rowCount()) == 0) {
         session_destroy();
         header('Location: ../CRM/access.php');
     }

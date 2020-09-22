@@ -16,7 +16,7 @@ switch ($_SESSION["action"]) {
 ?>
 
 <h2><?php print_r($_SESSION["tableName"]) ?></h2>
-<div class="separa-20"></div>
+<div class="space-20"></div>
 <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" enctype="multipart/form-data">
 	<table class="table table-striped dataTable" id="performAction">
 		<thead>

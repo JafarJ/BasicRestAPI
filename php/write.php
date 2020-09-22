@@ -38,15 +38,15 @@ if($tableName === "users"){
 			$editor = $_SESSION['id'];
 			$encryptedPass = SHA1($pass);
 			$sql = "INSERT INTO {$tableName}(name, surname, image, password, role, created_by, last_modified_by) VALUES(:name, :surname, :image, :pass, :rol, :creator, :modifier)";
-			$sentencia = $con->prepare($sql);
-			$sentencia->bindParam(':name', $name);
-			$sentencia->bindParam(':surname', $surname);
-			$sentencia->bindParam(':image', $image);
-			$sentencia->bindParam(':pass', $encryptedPass);
-			$sentencia->bindParam(':rol', $role);
-			$sentencia->bindParam(':creator', $editor);
-			$sentencia->bindParam(':modifier', $editor);
-			$sentencia->execute();			
+			$sentence = $con->prepare($sql);
+			$sentence->bindParam(':name', $name);
+			$sentence->bindParam(':surname', $surname);
+			$sentence->bindParam(':image', $image);
+			$sentence->bindParam(':pass', $encryptedPass);
+			$sentence->bindParam(':rol', $role);
+			$sentence->bindParam(':creator', $editor);
+			$sentence->bindParam(':modifier', $editor);
+			$sentence->execute();			
 			$_SESSION["action"]=null;
 			$performAction = true;	
 			if(isset($_GET["tableName"])){echo json_encode("Succesfully added user to db");}else{echo "<meta http-equiv='refresh' content='0'>";};	
@@ -76,13 +76,13 @@ if($tableName === "users"){
 		if(count($errors) == 0) {		
 			$editor = $_SESSION['id'];
 			$sql = "INSERT INTO {$tableName}(name, surname, image, created_by, last_modified_by) VALUES(:name, :surname, :image, :creator, :modifier)";
-			$sentencia = $con->prepare($sql);
-			$sentencia->bindParam(':name', $name);
-			$sentencia->bindParam(':surname', $surname);
-			$sentencia->bindParam(':image', $image);		
-			$sentencia->bindParam(':creator', $editor);
-			$sentencia->bindParam(':modifier', $editor);
-			$sentencia->execute();
+			$sentence = $con->prepare($sql);
+			$sentence->bindParam(':name', $name);
+			$sentence->bindParam(':surname', $surname);
+			$sentence->bindParam(':image', $image);		
+			$sentence->bindParam(':creator', $editor);
+			$sentence->bindParam(':modifier', $editor);
+			$sentence->execute();
 			$performAction = true;
 			$_SESSION["action"]=null;
 			if(isset($_GET["tableName"])){echo json_encode("Succesfully added customer to db");}else{echo "<meta http-equiv='refresh' content='0'>";};	
@@ -106,10 +106,10 @@ if($tableName === "users"){
 		
 		if(count($errors) == 0) {		
 			$sql = "INSERT INTO {$tableName}(table_name, permission) VALUES(:table_name, :permission)";
-			$sentencia = $con->prepare($sql);
-			$sentencia->bindParam(':table_name', $table_name);
-			$sentencia->bindParam(':permission', $permission);
-			$sentencia->execute();
+			$sentence = $con->prepare($sql);
+			$sentence->bindParam(':table_name', $table_name);
+			$sentence->bindParam(':permission', $permission);
+			$sentence->execute();
 			$_SESSION["action"]=null;
 			$performAction = true;
 			if(isset($_GET["tableName"])){echo json_encode("Succesfully added permission to db");}else{echo "<meta http-equiv='refresh' content='0'>";};	

@@ -30,9 +30,9 @@ include '../php/authentication.php';
                             <input placeholder="PASSWORD" type="password" name="password" tabindex="2" required>
                         </fieldset>
                         <fieldset class="fsboton wrapper-flex">
-                            <input type="submit" name="btn-access" id="contact-submit" data-submit="...enviando" value="Acceder">
+                            <input type="submit" name="btn-access" id="contact-submit" data-submit="...sending" value="login">
                             <div class="extraLinks">
-                                <p><a href="">Forgot Password? Don't worry, it's "admin"</a></p>
+                                <p><a href="">Forgot Password? hmm... shame.</a></p>
                                 
                             </div>
                         </fieldset>                      
@@ -44,7 +44,7 @@ include '../php/authentication.php';
 
         <footer>
             <div class="footer wrapper-flex">
-                <p>Hey! This is a test CRM for Agile Monkeys RestAPI test developped by <a target="_blank" href="https://www.linkedin.com/in/jafarjabbarzadeh/">Jafar Jabbarzadeh</a></p>
+                <p>Hey! this is a no framework PHP project using PDO for a RestApi developped by <a target="_blank" href="https://www.linkedin.com/in/jafarjabbarzadeh/">Jafar Jabbarzadeh</a></p>
             </div>
         </footer>
     </body>

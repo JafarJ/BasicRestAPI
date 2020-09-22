@@ -1,8 +1,8 @@
 <h2><?php print_r($_SESSION["tableName"]) ?></h2>
                     
-    <div class="separa-20"></div>
+    <div class="space-20"></div>
     <div>
-        <table class="table table-striped dataTable" id="registros">
+        <table class="table table-striped dataTable">
             <thead>
                 <tr>
                     <?php 

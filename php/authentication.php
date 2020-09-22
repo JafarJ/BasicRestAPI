@@ -4,11 +4,11 @@
 
         $user = $_SESSION['user'];
         $sql = "SELECT * FROM users WHERE name = :user";
-        $sentencia = $con->prepare($sql);
-        $sentencia->bindParam(':user', $user);
-        $sentencia->execute();
+        $sentence = $con->prepare($sql);
+        $sentence->bindParam(':user', $user);
+        $sentence->execute();
 
-        if(($numero = $sentencia->rowCount()) > 0) {
+        if(($numero = $sentence->rowCount()) > 0) {
            
             header('Location: ../CRM/crm.php');
         }
@@ -31,13 +31,13 @@
 
             if(count($errors) == 0) {
                 $sql = 'SELECT * FROM users WHERE name = :name AND password = :pass';
-                $sentencia = $con->prepare($sql);
-                $sentencia-> bindParam(':name', $user);
-                $sentencia-> bindParam(':pass', $pass);
-                $sentencia->execute();
-                $rows = $sentencia->fetch(PDO::FETCH_ASSOC);
+                $sentence = $con->prepare($sql);
+                $sentence-> bindParam(':name', $user);
+                $sentence-> bindParam(':pass', $pass);
+                $sentence->execute();
+                $rows = $sentence->fetch(PDO::FETCH_ASSOC);
 
-                if(($respuesta = $sentencia->rowCount()) == 0) {
+                if(($response = $sentence->rowCount()) == 0) {
                     $errors[] = 'Error, incorrect user or password.';
                 } else {
 	             $_SESSION['user'] = $rows['name'];

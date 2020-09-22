@@ -6,9 +6,9 @@ if(isset($_GET["dbname"])){
 }
 
 $sql = "show tables";
-$sentencia = $con->prepare($sql);
-$sentencia->execute();
-while($table = $sentencia->fetch(PDO::FETCH_ASSOC)){
+$sentence = $con->prepare($sql);
+$sentence->execute();
+while($table = $sentence->fetch(PDO::FETCH_ASSOC)){
 	$tableArray[] = $table['Tables_in_'.$dbName];
 }
 if(isset($_GET["dbname"])){echo json_encode("Succesfully read ".$dbName ." -> ");echo json_encode($tableArray);};

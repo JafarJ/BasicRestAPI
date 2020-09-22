@@ -18,17 +18,17 @@ if(!isset($_SESSION["idToUpdate"])) {
 	}
 
 	$sql = "SELECT * FROM {$tableName} WHERE id = :id";
-	$sentencia = $con->prepare($sql);
-	$sentencia->bindParam(':id', $_SESSION["idToUpdate"]);
-	$sentencia->execute();
+	$sentence = $con->prepare($sql);
+	$sentence->bindParam(':id', $_SESSION["idToUpdate"]);
+	$sentence->execute();
 
-	if(($respuesta = $sentencia->rowCount()) == 0){
+	if(($response = $sentence->rowCount()) == 0){
 		$errores[] = 'Error, id does not exist.';
 	} else {
 		$sql = "DELETE FROM {$tableName} WHERE id = :id";
-		$sentencia = $con->prepare($sql);
-		$sentencia->bindParam(':id', $_SESSION["idToUpdate"]);
-		$sentencia->execute();
+		$sentence = $con->prepare($sql);
+		$sentence->bindParam(':id', $_SESSION["idToUpdate"]);
+		$sentence->execute();
 		$_SESSION["action"]=null;
 		$performAction = true;
         if(isset($_GET["tableName"])){echo json_encode("Succesfully deleted from db");}else{echo "<meta http-equiv='refresh' content='0'>";};
